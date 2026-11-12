@@ -14,16 +14,15 @@ const SOCIAL_LINKS: SocialLink[] = [
   { label: 'Instagram', href: '#', icon: 'instagram' },
   { label: 'LinkedIn', href: '#', icon: 'linkedin' },
   { label: 'YouTube', href: '#', icon: 'youtube' },
-  { label: 'X', href: '#', icon: 'x' },
 ]
 
 const FOOTER_LINKS = [
+  { label: 'Home', href: '#top' },
+  { label: 'Services', href: '#services' },
   { label: 'For Brands', href: '#for-brands' },
   { label: 'For Creators', href: '#for-creators' },
-  { label: 'Our Services', href: '#services' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Privacy', href: '#' },
-  { label: 'Terms', href: '#' },
+  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#contact' },
 ] as const
 
 export function Footer() {
@@ -31,7 +30,7 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-surface">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-6 text-center text-[24vw] leading-none font-medium tracking-[-0.06em] text-ink/[0.04] select-none sm:top-0 lg:text-[20vw]"
+        className="pointer-events-none absolute inset-x-0 top-6 text-center text-[24vw] leading-none font-medium tracking-[-0.06em] text-foreground/[0.04] select-none sm:top-0 lg:text-[20vw]"
       >
         Influenzo
       </span>
@@ -41,9 +40,9 @@ export function Footer() {
           <span className="flex size-16 items-center justify-center rounded-2xl bg-lavender-500 text-white shadow-lg shadow-lavender-500/30 md:size-20 md:rounded-3xl">
             <SparkIcon className="size-8 md:size-10" />
           </span>
-          <h2 className="heading-section mt-8">Stay connected with Influenzo</h2>
+          <h2 className="heading-section mt-8">Creator & Brand Growth Agency.</h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
-            Creator news, campaign wins and updates, all in one place.
+            Making meaningful connections between brands, creators and audiences.
           </p>
         </FadeIn>
 
@@ -78,7 +77,7 @@ export function Footer() {
             </ul>
           </nav>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Influenzo. All rights reserved.
+            © {new Date().getFullYear()} INFLUENZO. All Rights Reserved.
           </p>
           <a href="#top" className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-coral-600">
             Back to top

@@ -1,39 +1,34 @@
 import { motion } from 'motion/react'
-import { ArrowUpRight, Clock, UserRound, WandSparkles } from 'lucide-react'
 import { SectionHeading } from '@/components/shared/section-heading'
-import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
-interface TeamMember {
-  name: string
-  role: string
-  department: string
-  joined: string
-  localTime: string
-  projects: number
-  status: string
-}
-
-// TODO: replace placeholder details and photos with the real team
-const TEAM: TeamMember[] = [
+const TEAM_POINTS = [
   {
-    name: 'Team Member One',
-    role: 'Founder & CEO',
-    department: 'Strategy',
-    joined: '12th Jan, 2023',
-    localTime: '10.30 AM Local time',
-    projects: 32,
-    status: 'Online now',
+    title: 'Where we started',
+    text: 'Our journey in digital marketing dates back to 2020, across meme marketing, influencer marketing, content strategy and brand collaborations.',
   },
   {
-    name: 'Team Member Two',
-    role: 'Head of Engineering',
-    department: 'Engineering',
-    joined: '30th Mar, 2023',
-    localTime: '10.30 AM Local time',
-    projects: 28,
-    status: 'Last seen 2m ago',
+    title: 'How we have worked',
+    text: 'We have worked with established agencies and on independent freelance projects, with hands-on exposure to campaign planning, creator management, content development and brand partnerships.',
   },
-]
+  {
+    title: 'What that gives you',
+    text: 'An understanding of both the operational and creative sides of influencer marketing, from finding the right creators to running campaigns that match brand objectives.',
+  },
+] as const
+
+const TEAM_STAT_LABEL = 'Hands-on in digital marketing since'
+const TEAM_STAT_VALUE = '2020'
+const TEAM_HEADLINE = 'Meaningful partnerships between brands and creators.'
+const TEAM_SUPPORT =
+  'INFLUENZO brings together that industry experience and a focused approach to building them.'
+
+const TEAM_FOCUS = [
+  { label: 'MemeMarketing', className: 'bg-tag-pink' },
+  { label: 'InfluencerMarketing', className: 'bg-tag-sky' },
+  { label: 'ContentStrategy', className: 'bg-tag-mint' },
+  { label: 'BrandCollaborations', className: 'bg-tag-amber' },
+] as const
 
 export function Team() {
   return (
@@ -41,86 +36,65 @@ export function Team() {
       <div className="container mx-auto">
         <SectionHeading
           title="The People Behind Influenzo"
-          description="A small, focused team that cares about clarity, craft and real outcomes."
-        >
-          <Button className="h-11 rounded-xl px-6">
-            Work with us
-            <ArrowUpRight aria-hidden="true" />
-          </Button>
-        </SectionHeading>
+          description="Built on experience. Driven by a deeper understanding of the creator economy."
+        />
 
-        <div className="mt-12 grid gap-8 md:mt-16 lg:grid-cols-2 lg:gap-6">
-          {TEAM.map((member, index) => (
-            <TeamCard key={member.name} member={member} index={index} />
-          ))}
+        <div className="mt-12 grid gap-4 md:mt-16 md:gap-6 lg:grid-cols-5">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="relative flex flex-col justify-between gap-12 overflow-hidden rounded-3xl bg-linear-to-br from-lavender-200 via-lavender-400 to-lavender-600 p-6 text-ink sm:p-8 lg:col-span-2 lg:p-10"
+          >
+            <div aria-hidden="true" className="absolute -top-16 -right-10 size-64 rounded-full bg-white/40 blur-3xl" />
+            <div aria-hidden="true" className="absolute -bottom-20 -left-10 size-64 rounded-full bg-lavender-700/50 blur-3xl" />
+
+            <div className="relative">
+              <p className="text-sm font-medium">{TEAM_STAT_LABEL}</p>
+              <p className="mt-2 text-7xl leading-none font-medium tracking-[-0.06em] sm:text-8xl">
+                {TEAM_STAT_VALUE}
+              </p>
+            </div>
+
+            <div className="relative">
+              <p className="text-2xl leading-tight font-medium tracking-[-0.03em] sm:text-3xl">{TEAM_HEADLINE}</p>
+              <p className="mt-4 text-sm leading-relaxed text-ink/75 md:text-base">{TEAM_SUPPORT}</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+            className="flex flex-col rounded-3xl border border-border bg-card p-6 sm:p-8 lg:col-span-3 lg:p-10"
+          >
+            <ol className="divide-y divide-border">
+              {TEAM_POINTS.map((point, index) => (
+                <li key={point.title} className="flex gap-5 py-6 first:pt-0 last:pb-6">
+                  <span className="mt-1 text-sm font-medium text-lavender-400">0{index + 1}</span>
+                  <div>
+                    <h3 className="text-xl font-medium tracking-tight">{point.title}</h3>
+                    <p className="mt-2 max-w-xl text-base leading-relaxed text-foreground/75">{point.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <ul aria-label="Areas of experience" className="mt-auto flex flex-wrap gap-2 border-t border-border pt-6">
+              {TEAM_FOCUS.map((focus) => (
+                <li
+                  key={focus.label}
+                  className={cn('rounded-full px-4 py-2 text-sm font-medium text-ink', focus.className)}
+                >
+                  #{focus.label}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </div>
     </section>
-  )
-}
-
-interface TeamCardProps {
-  member: TeamMember
-  index: number
-}
-
-function TeamCard({ member, index }: TeamCardProps) {
-  const details = [
-    { label: 'Role', value: member.role },
-    { label: 'Department', value: member.department, icon: WandSparkles },
-    { label: 'Joined', value: member.joined },
-  ]
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.12, ease: 'easeOut' }}
-    >
-      <div className="relative z-10 flex flex-col gap-5 rounded-3xl border border-border bg-card p-3 sm:flex-row sm:p-3.5">
-        {/* TODO: replace with the member's photo */}
-        <div className="relative aspect-[4/4.4] w-full shrink-0 overflow-hidden rounded-2xl bg-linear-to-b from-lavender-200 via-lavender-400 to-lavender-600 sm:aspect-auto sm:w-[38%]">
-          <div aria-hidden="true" className="absolute -top-8 left-1/4 size-40 rounded-full bg-white/50 blur-2xl" />
-          <div aria-hidden="true" className="absolute -right-10 -bottom-10 size-48 rounded-full bg-lavender-700/50 blur-3xl" />
-          <UserRound
-            className="absolute bottom-0 left-1/2 size-4/5 -translate-x-1/2 translate-y-6 text-white/70"
-            strokeWidth={1}
-            aria-hidden="true"
-          />
-        </div>
-
-        <div className="flex flex-1 flex-col gap-4 sm:py-2 sm:pr-2">
-          <h3 className="text-3xl font-medium tracking-tight sm:text-4xl">{member.name}</h3>
-
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <Button className="h-10 rounded-full px-5">Send Message</Button>
-            <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Clock className="size-4" aria-hidden="true" />
-              {member.localTime}
-            </span>
-          </div>
-
-          <dl className="mt-auto flex flex-col gap-2.5 rounded-2xl border border-border p-4 text-sm sm:text-base">
-            {details.map(({ label, value, icon: Icon }) => (
-              <div key={label} className="flex items-center justify-between gap-4">
-                <dt className="font-medium">{label}</dt>
-                <dd className="flex items-center gap-1.5">
-                  {Icon && <Icon className="size-4 text-lavender-700" aria-hidden="true" />}
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-
-      {/* footer strip tucked under the card */}
-      <div className="-mt-6 flex items-center justify-between rounded-b-3xl bg-card px-6 pt-9 pb-3 text-sm text-muted-foreground">
-        <span>{member.projects} Projects finished</span>
-        <span>{member.status}</span>
-      </div>
-    </motion.article>
   )
 }

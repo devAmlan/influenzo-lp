@@ -28,15 +28,15 @@ function GlassCard({ hills }: GlassCardProps) {
       ))}
 
       {/* hairline guides running past the panel edges */}
-      <div aria-hidden="true" className="absolute inset-y-0 left-[5%] w-px bg-white/25" />
-      <div aria-hidden="true" className="absolute inset-y-0 right-[5%] w-px bg-white/25" />
-      <div aria-hidden="true" className="absolute inset-x-0 top-[5.5%] h-px bg-white/25" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-[5.5%] h-px bg-white/25" />
+      <div aria-hidden="true" className="absolute inset-y-0 left-[8%] w-px bg-white/25" />
+      <div aria-hidden="true" className="absolute inset-y-0 right-[8%] w-px bg-white/25" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-[8%] h-px bg-white/25" />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-[8%] h-px bg-white/25" />
 
       {/* the glass */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-[5%] inset-y-[5.5%] rounded-3xl border border-white/30 bg-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.4)] backdrop-blur-2xl"
+        className="absolute inset-[8%] rounded-3xl border border-white/30 bg-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.4)] backdrop-blur-2xl"
       />
     </div>
   )

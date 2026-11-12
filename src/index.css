@@ -7,18 +7,23 @@
 
 @theme inline {
     /* Brand palette: brand purple scale (token names kept as lavender) */
-    --color-lavender-100: #f3e5ff;
-    --color-lavender-200: #e6c4ff;
-    --color-lavender-300: #d8a4ff;
-    --color-lavender-400: #c084fc;
-    --color-lavender-500: #a855f7;
-    --color-lavender-600: #873bff;
-    --color-lavender-700: #7200ff;
-    /* Accent: brand purple (token names kept as coral), used sparingly for highlights and hovers */
-    --color-coral-100: #f3e5ff;
-    --color-coral-300: #c084fc;
-    --color-coral-500: #a855f7;
-    --color-coral-600: #7200ff;
+    --color-lavender-100: #efe8fb;
+    --color-lavender-200: #c9b6f1;
+    --color-lavender-300: #bba3ee;
+    --color-lavender-400: #ad96e6;
+    --color-lavender-500: #a38ae4;
+    --color-lavender-600: #988ae1;
+    --color-lavender-700: #7f6bd6;
+    /* Accent: soft purple (token names kept as coral), used sparingly for highlights and hovers */
+    --color-coral-100: #efe8fb;
+    --color-coral-300: #ad96e6;
+    --color-coral-500: #b595ea;
+    --color-coral-600: #cdbbf3;
+    /* Tag accents: multi-colour hashtags (pink is the dot from the hero eyebrow) */
+    --color-tag-pink: #fe5f9f;
+    --color-tag-sky: #7cc4ff;
+    --color-tag-mint: #6ee7b7;
+    --color-tag-amber: #fbbf77;
     --color-surface: var(--surface);
     --color-surface-muted: var(--surface-muted);
     --color-surface-alt: var(--surface-alt);
@@ -66,43 +71,43 @@
 }
 
 :root {
-    /* Design system (light: brand palette) */
-    --surface: #f7f5f1;
-    --surface-muted: #ece9e3;
-    --surface-alt: #fcfbf9;
-    --ink: #0b0b10;
-    --background: var(--surface-alt);
-    --foreground: #0b0b10;
-    --card: #f2efe9;
-    --card-foreground: #0b0b10;
-    --popover: #fcfbf9;
-    --popover-foreground: #0b0b10;
-    --primary: #0b0b10;
-    --primary-foreground: #ffffff;
-    --secondary: #f3e5ff;
-    --secondary-foreground: #0b0b10;
-    --muted: #ece9e3;
-    --muted-foreground: #6b6873;
-    --accent: #e6c4ff;
-    --accent-foreground: #0b0b10;
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: #e2dfd8;
-    --input: #e2dfd8;
-    --ring: #a855f7;
-    --chart-1: #e6c4ff;
-    --chart-2: #d8a4ff;
-    --chart-3: #c084fc;
-    --chart-4: #a855f7;
-    --chart-5: #7200ff;
+    /* Design system (dark: brand palette) */
+    --surface: #1c1924;
+    --surface-muted: #2a2535;
+    --surface-alt: #15121c;
+    --ink: #0f0c16;
+    --background: var(--surface);
+    --foreground: #f4f1fa;
+    --card: #26212f;
+    --card-foreground: #f4f1fa;
+    --popover: #26212f;
+    --popover-foreground: #f4f1fa;
+    --primary: #b595ea;
+    --primary-foreground: #1c1924;
+    --secondary: #2f2a3b;
+    --secondary-foreground: #f4f1fa;
+    --muted: #2a2535;
+    --muted-foreground: #a69fb4;
+    --accent: #3a3250;
+    --accent-foreground: #f4f1fa;
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: #373042;
+    --input: #373042;
+    --ring: #b595ea;
+    --chart-1: #c9b6f1;
+    --chart-2: #bba3ee;
+    --chart-3: #ad96e6;
+    --chart-4: #988ae1;
+    --chart-5: #7f6bd6;
     --radius: 0.7rem;
-    --sidebar: #f7f5f1;
-    --sidebar-foreground: #0b0b10;
-    --sidebar-primary: #0b0b10;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #f3e5ff;
-    --sidebar-accent-foreground: #0b0b10;
-    --sidebar-border: #e2dfd8;
-    --sidebar-ring: #a855f7;
+    --sidebar: #1c1924;
+    --sidebar-foreground: #f4f1fa;
+    --sidebar-primary: #b595ea;
+    --sidebar-primary-foreground: #1c1924;
+    --sidebar-accent: #3a3250;
+    --sidebar-accent-foreground: #f4f1fa;
+    --sidebar-border: #373042;
+    --sidebar-ring: #b595ea;
 }
 
 .dark {
@@ -148,6 +153,12 @@
     }
   html {
     @apply font-sans antialiased;
+    scroll-padding-top: 6rem; /* clears the fixed navbar for anchor links */
+    }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+      }
     }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]) {
@@ -188,4 +199,101 @@
 /* Section heading scale: one size for every section title (and the About statement). */
 @utility heading-section {
   @apply text-3xl leading-[1.15] font-medium tracking-[-0.03em] sm:text-4xl md:text-5xl;
+}
+
+/* Progress bar on the active "How we make it happen" step; keep 5s in sync with AUTO_ADVANCE_MS in process.tsx. */
+@keyframes step-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility step-progress {
+  transform-origin: left;
+  animation: step-progress 5s linear forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+/* Fades the step copy in when it changes (re-triggered by a changing `key`). */
+@keyframes fade-swap {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility fade-swap {
+  animation: fade-swap 0.45s ease-out both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Star border (React Bits): canvas light that travels the button outline. */
+@layer components {
+  .star-border {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0.875rem 1.5rem;
+    border: 0;
+    border-radius: var(--star-border-radius);
+    background: var(--star-border-surface);
+    color: var(--star-border-text);
+    font-family: inherit;
+    line-height: 1.25;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .star-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--star-border-thickness) var(--star-border-track);
+    pointer-events: none;
+  }
+
+  .star-border__light {
+    position: absolute;
+    top: -48px;
+    left: -48px;
+    z-index: -1;
+    width: calc(100% + 96px);
+    height: calc(100% + 96px);
+    pointer-events: none;
+  }
+
+  button.star-border,
+  a.star-border {
+    cursor: pointer;
+  }
+
+  .star-border:focus-visible {
+    outline: 2px solid var(--star-border-track);
+    outline-offset: 3px;
+  }
+
+  .star-border:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
