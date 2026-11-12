@@ -47,7 +47,7 @@ export function Navbar() {
                 : 'border-transparent',
             )}
           >
-            <Logo className="text-xl sm:text-2xl" />
+            <Logo className="text-2xl" />
 
             <nav aria-label="Main" className="hidden items-center gap-6 lg:flex xl:gap-8">
               {NAV_LINKS.map((link) => (
@@ -58,7 +58,8 @@ export function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2">
-              <Button className="h-10 rounded-xl px-3.5 text-xs shadow-lg shadow-primary/30 sm:h-11 sm:px-5 sm:text-sm md:h-12">
+              {/* below lg the button lives at the bottom of the mobile menu */}
+              <Button className="hidden h-12 rounded-xl px-5 text-sm shadow-lg shadow-primary/30 lg:inline-flex">
                 Book a Call
               </Button>
               <button
@@ -94,6 +95,12 @@ export function Navbar() {
                       {link.label}
                     </a>
                   ))}
+                  <Button
+                    onClick={() => setMenuOpen(false)}
+                    className="mt-3 mb-1 h-12 w-full rounded-xl text-sm shadow-lg shadow-primary/30"
+                  >
+                    Book a Call
+                  </Button>
                 </motion.nav>
               )}
             </AnimatePresence>
