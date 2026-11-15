@@ -8,29 +8,49 @@ import {
 } from '@/components/sections/service-mockups'
 
 interface Service {
+  number: string
   title: string
   description: string
-  mockup: ReactNode
 }
 
-const SERVICES: Service[] = [
+const MOCKUPS: readonly ReactNode[] = [<StrategyMockup />, <ProductMockup />, <IntegrationMockup />]
+
+const SERVICES: readonly Service[] = [
   {
-    title: 'Campaign Management',
+    number: '01',
+    title: 'Influencer Marketing',
     description:
-      'From the first brief to the publish date, we handle outreach, contracts and content review so your team can stay on your product.',
-    mockup: <StrategyMockup />,
+      'We plan and execute influencer campaigns that connect brands with relevant creators across Instagram, YouTube and other digital platforms.',
   },
   {
-    title: 'Creator Management',
+    number: '02',
+    title: 'Talent Management',
     description:
-      'We pitch creators to the right brands, negotiate fair rates and chase payments, so they can spend their time creating.',
-    mockup: <ProductMockup />,
+      'We help creators build their personal brands, manage collaborations, negotiate deals and develop long-term opportunities.',
   },
   {
-    title: 'Performance Reporting',
+    number: '03',
+    title: 'UGC Content Creation',
     description:
-      'See reach, engagement and sales for every post in one report, with a clear recommendation for what to run next.',
-    mockup: <IntegrationMockup />,
+      'We connect brands with UGC creators to produce relatable, platform-native videos, product demonstrations, testimonials and creative ad assets.',
+  },
+  {
+    number: '04',
+    title: 'Content Strategy & Personal Branding',
+    description:
+      'We help creators identify their niche, develop content pillars, build a consistent voice and create a sustainable content roadmap.',
+  },
+  {
+    number: '05',
+    title: 'Influencer Advertising Shoots',
+    description:
+      'From concept development and creator selection to shoots and final deliverables, we handle the creative process.',
+  },
+  {
+    number: '06',
+    title: 'Brand IPs & Long-term Partnerships',
+    description:
+      'We conceptualise creator-led shows, branded content series, recurring collaborations and digital properties that build long-term audience connections.',
   },
 ]
 
@@ -39,21 +59,24 @@ export function Services() {
     <section id="services" className="py-16 md:py-24">
       <div className="container mx-auto">
         <SectionHeading
-          title="Campaigns for Brands, Careers for Creators"
-          description="We run influencer campaigns for brands and handle the business side for creators, so both get better partnerships with less admin."
+          title="What We Do"
+          description="We help creators grow and brands reach the right audience."
         />
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3 md:gap-6">
+        <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-x-6 md:gap-y-16">
           {SERVICES.map((service, index) => (
             <motion.article
               key={service.title}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.12, ease: 'easeOut' }}
+              transition={{ duration: 0.6, delay: (index % 3) * 0.12, ease: 'easeOut' }}
             >
-              {service.mockup}
-              <h3 className="mt-6 text-2xl font-medium tracking-tight">{service.title}</h3>
+              {MOCKUPS[index % MOCKUPS.length]}
+              <h3 className="mt-6 text-2xl font-medium tracking-tight">
+                <span className="mr-2 text-base text-lavender-300">{service.number}.</span>
+                {service.title}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-foreground/75 md:text-base">
                 {service.description}
               </p>

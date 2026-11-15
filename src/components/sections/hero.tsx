@@ -1,11 +1,11 @@
 import { motion } from 'motion/react'
+import { ArrowUpRight } from 'lucide-react'
 import { SplitText } from '@/components/shared/split-text'
 import { SparkIcon } from '@/components/shared/logo'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { StarBorder } from '@/components/shared/star-border'
 import { cn } from '@/lib/utils'
 
-const HEADING_LINES = ['Influencer Management', 'Without the Back-and-Forth'] as const
+const HEADING_LINES = ['Connecting creators, brands', 'and opportunities that matter.'] as const
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
@@ -21,30 +21,33 @@ export function Hero() {
         Influencer management for brands and creators
       </motion.p>
 
-      <h1 className="mt-5 max-w-5xl text-4xl leading-[1.05] font-medium tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-7xl">
+      <h1 className="mt-6 max-w-5xl md:mt-8 text-4xl leading-[1.05] font-medium tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-7xl">
         <SplitText lines={HEADING_LINES} delay={0.25} />
       </h1>
 
-      <motion.p {...fadeUp(1.0)} className="mt-6 max-w-xl text-base text-foreground/80 md:text-lg lg:text-xl">
-        We match brands with the right creators, run the campaign, and report the results. Creators get fair deals and a team that handles the rest.
+      <motion.p {...fadeUp(1.0)} className="mt-6 max-w-xl text-pretty text-base text-foreground/80 md:text-lg lg:text-xl">
+        We help creators grow their influence and connect brands with the voices that move audiences.
       </motion.p>
 
-      <motion.form
-        {...fadeUp(1.15)}
-        onSubmit={(event) => event.preventDefault()}
-        className="mt-8 flex w-full max-w-md items-center gap-2 rounded-2xl border border-border bg-muted/60 p-1 shadow-sm"
-      >
-        <Input
-          type="email"
-          required
-          aria-label="Email address"
-          placeholder="Your email address"
-          className="h-11 border-0 bg-transparent px-3 shadow-none focus-visible:ring-0"
-        />
-        <Button type="submit" className="h-11 rounded-xl px-5 shadow-md">
-          Start a Campaign
-        </Button>
-      </motion.form>
+      <motion.div {...fadeUp(1.15)} className="mt-8 md:mt-10">
+        <StarBorder
+          duration={4}
+          trailLength={0.3}
+          thickness={1}
+          radius={16}
+          glow={0.6}
+          hover="lap"
+          clickPulse
+          theme="dark"
+          backgroundColor="var(--primary)"
+          textColor="var(--primary-foreground)"
+          borderColor="color-mix(in oklab, white 35%, transparent)"
+          className="h-14 gap-3 px-8 text-base font-semibold hover:brightness-110"
+        >
+          Get started
+          <ArrowUpRight aria-hidden="true" className="size-5" />
+        </StarBorder>
+      </motion.div>
 
       <HeroPreview />
     </section>
@@ -57,7 +60,7 @@ function HeroPreview() {
       initial={{ opacity: 0, y: 40, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, delay: 1.3, ease: 'easeOut' }}
-      className="relative mt-12 flex h-72 w-full items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-lavender-300 via-lavender-400 to-lavender-600 sm:h-96 md:h-[28rem]"
+      className="relative mt-12 md:mt-16 flex h-72 w-full items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-lavender-300 via-lavender-400 to-lavender-600 sm:h-96 md:h-[28rem]"
     >
       {/* soft glow blobs */}
       <div aria-hidden="true" className="absolute -top-16 -left-10 size-72 rounded-full bg-lavender-200/60 blur-3xl" />

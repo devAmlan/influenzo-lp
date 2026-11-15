@@ -42,7 +42,7 @@ function toPercent(pin: ClientPin): { left: string; top: string } {
 export function GlobalReach() {
   return (
     <div id="case-studies" className="mt-12 md:mt-16">
-        <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-linear-to-br from-lavender-300 via-lavender-400 to-lavender-600 p-6 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:gap-6 lg:p-14">
+        <div className="grid items-center gap-10 overflow-hidden rounded-3xl bg-linear-to-br from-lavender-300 via-lavender-400 to-lavender-600 p-6 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:gap-6 lg:p-14 text-ink [--foreground:var(--ink)]">
           <WorldMap />
 
           <motion.div
@@ -66,7 +66,12 @@ export function GlobalReach() {
               ))}
             </dl>
 
-            <Button className="mt-8 h-11 rounded-xl px-6">Get Started</Button>
+            <Button
+              variant="ghost"
+              className="mt-8 h-12 rounded-xl bg-ink px-6 text-sm text-white shadow-lg shadow-ink/30 hover:bg-ink/85 hover:text-white"
+            >
+              Get Started
+            </Button>
           </motion.div>
         </div>
     </div>

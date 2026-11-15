@@ -1,5 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { cn } from '@/lib/utils'
 
@@ -7,135 +6,103 @@ interface ProcessStep {
   id: string
   number: string
   title: string
+  headline: string
   description: string
 }
 
+/** Keep in sync with the `step-progress` duration in index.css. */
+const AUTO_ADVANCE_MS = 5000
+
 const STEPS: ProcessStep[] = [
   {
-    id: 'match',
+    id: 'understand',
     number: '01',
-    title: 'Match',
-    description:
-      'We learn your brand and audience, then shortlist creators whose followers are real and whose content fits.',
+    title: 'Understand',
+    headline: 'Every campaign starts with listening.',
+    description: 'We understand your goals, audience, expectations and requirements.',
   },
   {
-    id: 'plan',
+    id: 'strategise',
     number: '02',
-    title: 'Plan',
-    description:
-      'We agree on deliverables, dates and fees with every creator, and put it all in writing before work starts.',
+    title: 'Strategise',
+    headline: 'A plan built around your goals.',
+    description: 'We build the campaign or creator growth strategy around those objectives.',
   },
   {
-    id: 'launch',
+    id: 'match',
     number: '03',
-    title: 'Launch',
-    description:
-      'We brief the creators, review the content before it goes live, and keep every post on schedule.',
+    title: 'Match',
+    headline: 'The right people, the right fit.',
+    description: 'We identify the right creators, brands, formats and opportunities.',
   },
   {
-    id: 'measure',
+    id: 'execute',
     number: '04',
-    title: 'Measure',
-    description:
-      'We track reach, engagement and sales, then send a clear report on what worked and what to repeat.',
+    title: 'Execute',
+    headline: 'From first shoot to final delivery.',
+    description: 'We coordinate collaborations, content creation, shoots and campaign delivery.',
   },
 ]
 
 export function Process() {
-  const [activeId, setActiveId] = useState(STEPS[0].id)
-  const activeStep = STEPS.find((step) => step.id === activeId) ?? STEPS[0]
+  const [activeIndex, setActiveIndex] = useState(0)
+  const activeStep = STEPS[activeIndex]
+
+  // Auto-advance; selecting a step changes activeIndex, which restarts this timer.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const timer = window.setTimeout(() => {
+      setActiveIndex((current) => (current + 1) % STEPS.length)
+    }, AUTO_ADVANCE_MS)
+
+    return () => window.clearTimeout(timer)
+  }, [activeIndex])
 
   return (
-    <section id="process" className="py-8 md:py-16">
+    <section id="process" className="py-16 md:py-24">
       <div className="container mx-auto">
-        <div className="grid overflow-hidden rounded-3xl border border-border bg-surface lg:grid-cols-2">
-          <IntroColumn />
+        <SectionHeading
+          title="How We Make It Happen"
+          description="From the first conversation to the final deliverable."
+        />
 
-          <div className="flex flex-col border-t border-border lg:border-t-0 lg:border-l">
-            <div className="flex items-center justify-center gap-4 p-6 sm:gap-6 sm:p-8">
-              {/* TODO: replace with real images */}
-              <ImagePlaceholder className="h-32 flex-[1.8] rounded-full sm:h-48 lg:h-56" />
-              <ImagePlaceholder className="aspect-square flex-1 rounded-full" />
-            </div>
+        <div role="tablist" aria-label="Our process" className="mt-12 grid grid-cols-2 gap-3 md:mt-16 lg:grid-cols-4">
+          {STEPS.map((step, index) => (
+            <StepTab
+              key={step.id}
+              step={step}
+              active={index === activeIndex}
+              onSelect={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
 
-            <div className="flex min-h-32 flex-1 items-start justify-end px-6 sm:px-8">
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={activeStep.id}
-                  id={`panel-${activeStep.id}`}
-                  role="tabpanel"
-                  aria-labelledby={`tab-${activeStep.id}`}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                  className="max-w-md text-right text-base leading-relaxed md:text-lg"
-                >
-                  {activeStep.description}
-                </motion.p>
-              </AnimatePresence>
-            </div>
-
-            <div role="tablist" aria-label="Our process" className="mt-8 grid grid-cols-2 border-t border-border sm:grid-cols-4">
-              {STEPS.map((step) => (
-                <StepTab
-                  key={step.id}
-                  step={step}
-                  active={step.id === activeId}
-                  onSelect={() => setActiveId(step.id)}
-                />
-              ))}
-            </div>
+        <div
+          id={`panel-${activeStep.id}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${activeStep.id}`}
+          aria-live="polite"
+          className="mt-3 flex min-h-48 flex-col justify-between gap-8 rounded-3xl border border-border bg-card p-6 sm:p-8 md:mt-4 lg:flex-row lg:items-end lg:p-10"
+        >
+          <div key={activeStep.id} className="fade-swap max-w-2xl">
+            <h3 className="text-3xl leading-tight font-medium tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+              {activeStep.headline}
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-foreground/75 md:text-lg lg:text-xl">
+              {activeStep.description}
+            </p>
           </div>
+          <span
+            key={`${activeStep.id}-number`}
+            aria-hidden="true"
+            className="fade-swap text-7xl leading-none font-medium tracking-[-0.06em] text-lavender-400 sm:text-8xl"
+          >
+            {activeStep.number}
+          </span>
         </div>
       </div>
     </section>
-  )
-}
-
-function IntroColumn() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="relative flex min-h-96 flex-col justify-between overflow-hidden p-6 sm:p-8 lg:min-h-[34rem]"
-    >
-      {/* decorative shapes */}
-      <div aria-hidden="true" className="absolute top-24 left-16 size-56 rotate-45 rounded-3xl bg-lavender-100/40" />
-      <div aria-hidden="true" className="absolute top-40 right-0 size-56 rotate-45 rounded-3xl bg-lavender-200/30" />
-
-      <div className="relative">
-        <div className="flex items-start justify-between gap-4">
-          <BrandMark />
-          <p className="text-right text-xs tracking-wide uppercase">
-            <span className="text-muted-foreground">// </span>How
-            <br />
-            It Works
-          </p>
-        </div>
-        <div aria-hidden="true" className="mt-8 h-1 w-40 rounded-full bg-linear-to-r from-lavender-200 via-lavender-400 to-coral-300 sm:w-56" />
-      </div>
-
-      <div className="relative mt-16">
-        <SectionHeading
-          variant="stacked"
-          title="From First Brief to Final Report"
-          description="One team runs every campaign through the same four steps, so you always know what happens next."
-        />
-      </div>
-    </motion.div>
-  )
-}
-
-function BrandMark() {
-  return (
-    <span aria-hidden="true" className="grid size-12 grid-cols-2 gap-0.5 text-lavender-700">
-      {Array.from({ length: 4 }, (_, index) => (
-        <span key={index} className="rounded-full bg-current" />
-      ))}
-    </span>
   )
 }
 
@@ -155,36 +122,31 @@ function StepTab({ step, active, onSelect }: StepTabProps) {
       aria-controls={`panel-${step.id}`}
       onClick={onSelect}
       className={cn(
-        'relative flex items-start justify-center gap-1 px-4 py-6 text-xl font-medium tracking-tight transition-colors sm:text-2xl',
-        active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+        'relative flex items-center justify-between gap-3 overflow-hidden rounded-2xl border px-5 py-4 text-left transition-colors duration-500 sm:px-6 sm:py-5',
+        active ? 'border-transparent text-ink' : 'border-border bg-card hover:bg-muted',
       )}
     >
-      <sup className="mt-1 text-[0.5em] font-normal">{step.number}</sup>
-      {step.title}
+      {/* gradient lives on its own layer so it can fade (gradients can't be transitioned) */}
+      <span
+        aria-hidden="true"
+        className={cn(
+          'absolute inset-0 bg-linear-to-br from-lavender-200 via-lavender-400 to-lavender-600 transition-opacity duration-500',
+          active ? 'opacity-100' : 'opacity-0',
+        )}
+      />
+      <span className="relative text-lg font-medium tracking-tight sm:text-xl">{step.title}</span>
+      <span
+        className={cn(
+          'relative text-sm transition-colors duration-500',
+          active ? 'text-ink/70' : 'text-muted-foreground',
+        )}
+      >
+        ({step.number})
+      </span>
       {active && (
-        <motion.span
-          layoutId="process-tab-indicator"
-          className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-lavender-200 via-lavender-400 to-lavender-300"
-        />
+        // key restarts the progress animation whenever a different step becomes active
+        <span key={step.id} aria-hidden="true" className="step-progress absolute inset-x-0 bottom-0 h-1 bg-ink/80" />
       )}
     </button>
-  )
-}
-
-interface ImagePlaceholderProps {
-  className?: string
-}
-
-function ImagePlaceholder({ className }: ImagePlaceholderProps) {
-  return (
-    <div
-      aria-hidden="true"
-      className={cn(
-        'flex items-center justify-center border border-dashed border-lavender-500/60 bg-linear-to-br from-lavender-100 to-lavender-300 text-sm text-lavender-700',
-        className,
-      )}
-    >
-      Image
-    </div>
   )
 }
