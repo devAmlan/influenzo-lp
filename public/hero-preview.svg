@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 448" fill="none" font-family="'Mona Sans Variable', 'Mona Sans', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c9b6f1"/><stop offset="1" stop-color="#7f6bd6"/></linearGradient>
+    <linearGradient id="a2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bba3ee"/><stop offset="1" stop-color="#6b57c8"/></linearGradient>
+    <linearGradient id="a3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ad96e6"/><stop offset="1" stop-color="#988ae1"/></linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#a38ae4" stop-opacity="0.45"/><stop offset="1" stop-color="#a38ae4" stop-opacity="0"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#4a3a8f" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- side creators (cropped on small screens) -->
+  <g stroke="#fff" stroke-width="3" fill-opacity="0.9">
+    <circle cx="104" cy="150" r="32" fill="url(#a1)"/>
+    <circle cx="146" cy="310" r="24" fill="url(#a2)"/>
+    <circle cx="862" cy="130" r="24" fill="url(#a3)"/>
+    <circle cx="850" cy="300" r="34" fill="url(#a2)"/>
+  </g>
+  <g transform="translate(104 150) scale(1.3)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g><g transform="translate(146 310) scale(0.95)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g><g transform="translate(862 130) scale(0.95)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g><g transform="translate(850 300) scale(1.35)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g>
+
+  <!-- dashboard window -->
+  <rect x="200" y="56" width="560" height="312" rx="28" fill="#fff" fill-opacity="0.95" filter="url(#sh)"/>
+  <circle cx="226" cy="78" r="4.500" fill="#e3daf8"/><circle cx="242" cy="78" r="4.500" fill="#e3daf8"/><circle cx="258" cy="78" r="4.500" fill="#e3daf8"/>
+  <path d="M224 100H736" stroke="#ece6fa"/>
+  <text x="224" y="132" font-size="18" font-weight="600" fill="#1c1a24" letter-spacing="-0.4">Summer launch</text>
+  <rect x="660" y="112" width="76" height="26" rx="13" fill="#7f6bd6"/>
+  <circle cx="676" cy="125" r="3.500" fill="#fff"/>
+  <text x="708" y="129" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Live</text>
+  <rect x="224" y="144" width="160" height="60" rx="16" fill="#f4f0fc"/>
+  <text x="240" y="166" font-size="11" fill="#6f6a80">Reach</text>
+  <text x="240" y="192" font-size="21" font-weight="600" fill="#1c1a24" letter-spacing="-0.6">1.2M</text>
+  <rect x="400" y="144" width="160" height="60" rx="16" fill="#f4f0fc"/>
+  <text x="416" y="166" font-size="11" fill="#6f6a80">Engagement</text>
+  <text x="416" y="192" font-size="21" font-weight="600" fill="#1c1a24" letter-spacing="-0.6">7.4%</text>
+  <rect x="576" y="144" width="160" height="60" rx="16" fill="#f4f0fc"/>
+  <text x="592" y="166" font-size="11" fill="#6f6a80">Creators</text>
+  <text x="592" y="192" font-size="21" font-weight="600" fill="#1c1a24" letter-spacing="-0.6">12</text>
+
+  <rect x="224" y="220" width="296" height="132" rx="18" fill="#f4f0fc"/>
+  <text x="240" y="242" font-size="11" fill="#6f6a80">Reach over time</text>
+  <path d="M240 272H504M240 298H504" stroke="#e3daf8" stroke-dasharray="3 4"/>
+  <path d="M240 312L280 300L320 304L360 280L400 284L440 262L480 252L504 246L504 324L240 324Z" fill="url(#area)"/>
+  <path d="M240 312L280 300L320 304L360 280L400 284L440 262L480 252L504 246" stroke="#7f6bd6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="504" cy="246" r="6" fill="#fff" stroke="#7f6bd6" stroke-width="3"/>
+
+  <rect x="536" y="220" width="200" height="132" rx="18" fill="#f4f0fc"/>
+  <text x="552" y="242" font-size="11" fill="#6f6a80">Top creators</text>
+  <circle cx="564" cy="266" r="12" fill="url(#a1)"/><g transform="translate(564 266) scale(0.5)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g>
+  <text x="584" y="270" font-size="12" font-weight="600" fill="#1c1a24">Aanya</text>
+  <text x="720" y="270" font-size="12" fill="#6f6a80" text-anchor="end">320K</text>
+  <circle cx="564" cy="298" r="12" fill="url(#a2)"/><g transform="translate(564 298) scale(0.5)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g>
+  <text x="584" y="302" font-size="12" font-weight="600" fill="#1c1a24">Rohan</text>
+  <text x="720" y="302" font-size="12" fill="#6f6a80" text-anchor="end">210K</text>
+  <circle cx="564" cy="330" r="12" fill="url(#a3)"/><g transform="translate(564 330) scale(0.5)" fill="#fff" fill-opacity="0.95"><circle cy="-5" r="8"/><path d="M-14 16A14 14 0 0 1 14 16Z"/></g>
+  <text x="584" y="334" font-size="12" font-weight="600" fill="#1c1a24">Isha</text>
+  <text x="720" y="334" font-size="12" fill="#6f6a80" text-anchor="end">180K</text>
+
+  <!-- floating chips -->
+  <g filter="url(#sh)">
+    <rect x="184" y="22" width="184" height="44" rx="22" fill="#fff"/>
+    <rect x="612" y="30" width="150" height="40" rx="20" fill="#fff"/>
+    <rect x="560" y="352" width="204" height="44" rx="22" fill="#1c1a24"/>
+  </g>
+  <circle cx="208" cy="44" r="10" fill="#7f6bd6"/>
+  <path d="M204 44h8M208 40v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <text x="226" y="49" font-size="14" font-weight="600" fill="#1c1a24">Creator joined</text>
+  <circle cx="634" cy="50" r="10" fill="#a38ae4"/>
+  <path d="M630 53l4-6 4 6M634 47v7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 0)"/>
+  <text x="652" y="55" font-size="14" font-weight="600" fill="#1c1a24">+24% reach</text>
+  <circle cx="584" cy="374" r="10" fill="#a38ae4"/>
+  <path d="M579.500 374l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="602" y="379" font-size="14" font-weight="500" fill="#fff">Content approved</text>
+</svg>

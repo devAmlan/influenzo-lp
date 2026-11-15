@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, type MotionValue } from 'motion/react'
 import { useRef } from 'react'
 import { SparkIcon } from '@/components/shared/logo'
-import { GlobalReach } from '@/components/sections/global-reach'
+import { AboutAgency } from '@/components/sections/about-agency'
 
 const STATEMENT_WORDS = [
   'In', 'a', 'world', 'shaped', 'by', 'constant', 'noise,', '{icon}', 'we', 'choose', 'clarity.',
@@ -32,7 +32,7 @@ export function About() {
         ))}
       </p>
 
-      <GlobalReach />
+      <AboutAgency />
       </div>
     </section>
   )
