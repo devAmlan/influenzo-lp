@@ -7,7 +7,7 @@ interface LogoProps {
 export function Logo({ className }: LogoProps) {
   return (
     <a href="/" className={cn('flex items-center gap-2 text-2xl font-medium tracking-tight', className)}>
-      <SparkIcon className="size-7" />
+      <img src="/logo.svg" alt="" className="size-8" />
       Influenzo
     </a>
   )

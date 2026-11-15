@@ -1,6 +1,5 @@
 import { ArrowUp } from 'lucide-react'
 import { FadeIn } from '@/components/shared/fade-in'
-import { SparkIcon } from '@/components/shared/logo'
 import { SocialIcon } from '@/components/shared/social-icon'
 import type { SocialIconName } from '@/components/shared/social-icon'
 
@@ -37,8 +36,8 @@ export function Footer() {
 
       <div className="container relative mx-auto pt-20 pb-8 md:pt-28">
         <FadeIn className="mx-auto flex max-w-2xl flex-col items-center text-center">
-          <span className="flex size-16 items-center justify-center rounded-2xl bg-lavender-500 text-white shadow-lg shadow-lavender-500/30 md:size-20 md:rounded-3xl">
-            <SparkIcon className="size-8 md:size-10" />
+          <span className="flex size-16 items-center justify-center rounded-2xl bg-white shadow-lg shadow-lavender-500/30 md:size-20 md:rounded-3xl">
+            <img src="/logo.svg" alt="" className="size-8 md:size-10" />
           </span>
           <h2 className="heading-section mt-8">Creator & Brand Growth Agency.</h2>
           <p className="mt-4 text-base text-muted-foreground md:text-lg">
