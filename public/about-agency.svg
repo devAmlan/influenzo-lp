@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" fill="none" font-family="'Mona Sans Variable', 'Mona Sans', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c9b6f1"/><stop offset="1" stop-color="#7f6bd6"/></linearGradient>
+    <linearGradient id="a2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bba3ee"/><stop offset="1" stop-color="#6b57c8"/></linearGradient>
+    <linearGradient id="a3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ad96e6"/><stop offset="1" stop-color="#988ae1"/></linearGradient>
+    <filter id="sh" x="-20%" y="-30%" width="140%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#4a3a8f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g stroke="#fff" stroke-opacity="0.55" stroke-width="1.500" stroke-dasharray="4 6">
+    <circle cx="320" cy="230" r="110"/>
+    <circle cx="320" cy="230" r="190"/>
+  </g>
+  <g stroke="#fff" stroke-opacity="0.8" stroke-width="1.500" stroke-dasharray="4 5"><path d="M320 230L140 110"/><path d="M320 230L500 110"/><path d="M320 230L140 350"/><path d="M320 230L500 350"/></g>
+  <circle cx="320" cy="230" r="74" fill="#fff" fill-opacity="0.35"/>
+  <circle cx="320" cy="230" r="56" fill="#1c1a24" filter="url(#sh)"/>
+  <path transform="translate(300 204) scale(1.67)" d="M12 0c.7 6.4 5.600 11.300 12 12-6.400.7-11.300 5.600-12 12-.7-6.400-5.600-11.300-12-12C6.400 11.300 11.300 6.400 12 0Z" fill="#fff"/>
+  <text x="320" y="322" font-size="16" font-weight="600" fill="#1c1a24" text-anchor="middle" letter-spacing="-0.3">Influenzo</text>
+  <rect x="55" y="80" width="170" height="60" rx="30" fill="#fff" filter="url(#sh)"/>
+  <circle cx="87" cy="110" r="18" fill="url(#a1)"/>
+  <g><rect x="79" y="106" width="16" height="12" rx="3" fill="#fff"/><path d="M83 106v-2a4 4 0 0 1 8 0v2" stroke="#fff" stroke-width="2"/><path d="M79 110h16" stroke="#8b78db" stroke-width="1.500"/></g>
+  <text x="115" y="108" font-size="16" font-weight="600" fill="#1c1a24" letter-spacing="-0.3">Brands</text>
+  <text x="115" y="126" font-size="12" fill="#6f6a80">Right fit</text>
+  <rect x="415" y="80" width="170" height="60" rx="30" fill="#fff" filter="url(#sh)"/>
+  <circle cx="447" cy="110" r="18" fill="url(#a2)"/>
+  <g><circle cx="447" cy="106" r="4.500" fill="#fff"/><path d="M438 119a9 9 0 0 1 18 0Z" fill="#fff"/></g>
+  <text x="475" y="108" font-size="16" font-weight="600" fill="#1c1a24" letter-spacing="-0.3">Creators</text>
+  <text x="475" y="126" font-size="12" fill="#6f6a80">Real voices</text>
+  <rect x="55" y="320" width="170" height="60" rx="30" fill="#fff" filter="url(#sh)"/>
+  <circle cx="87" cy="350" r="18" fill="url(#a3)"/>
+  <g><path d="M83 342v16l12-8Z" fill="#fff"/></g>
+  <text x="115" y="348" font-size="16" font-weight="600" fill="#1c1a24" letter-spacing="-0.3">Content</text>
+  <text x="115" y="366" font-size="12" fill="#6f6a80">Platform-native</text>
+  <rect x="415" y="320" width="170" height="60" rx="30" fill="#fff" filter="url(#sh)"/>
+  <circle cx="447" cy="350" r="18" fill="url(#a1)"/>
+  <g><path d="M447 358c-8-5-10-9-10-12a4.500 4.500 0 0 1 8.500-2 4.500 4.500 0 0 1 8.500 2c0 3-2 7-10 12Z" fill="#fff"/></g>
+  <text x="475" y="348" font-size="16" font-weight="600" fill="#1c1a24" letter-spacing="-0.3">Audience</text>
+  <text x="475" y="366" font-size="12" fill="#6f6a80">Real reach</text>
+</svg>
