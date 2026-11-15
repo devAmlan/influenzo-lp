@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 580" fill="none" font-family="'Mona Sans Variable', 'Mona Sans', system-ui, sans-serif">
+  <defs>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.6" y2="1"><stop stop-color="#c9b6f1"/><stop offset="0.55" stop-color="#a38ae4"/><stop offset="1" stop-color="#6b57c8"/></linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#bba3ee"/><stop offset="1" stop-color="#988ae1"/></linearGradient>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ad96e6"/><stop offset="1" stop-color="#6b57c8"/></linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#a38ae4"/><stop offset="1" stop-color="#7f6bd6"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#4a3a8f" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect x="80" y="70" width="400" height="400" rx="28" fill="#fff" fill-opacity="0.94" filter="url(#sh)"/>
+  <text x="112" y="116" font-size="19" font-weight="600" fill="#1c1a24" letter-spacing="-0.4">Original series</text>
+  <rect x="368" y="98" width="80" height="28" rx="14" fill="#ece6fa"/>
+  <text x="408" y="116.500" font-size="12" font-weight="600" fill="#6b57c8" text-anchor="middle">Season 2</text>
+  <rect x="112" y="142" width="336" height="130" rx="20" fill="url(#screen)"/>
+  <circle cx="400" cy="207" r="26" fill="#fff" fill-opacity="0.92"/>
+  <path d="M394 195v24l20-12Z" fill="#7f6bd6"/>
+  <text x="134" y="204" font-size="24" font-weight="600" fill="#fff" letter-spacing="-0.8">The Weekend Edit</text>
+  <text x="134" y="226" font-size="12" fill="#fff" fill-opacity="0.85">Presented by your brand</text>
+  <rect x="112" y="286" width="104" height="70" rx="16" fill="url(#g2)"/>
+  <path d="M159.0 313.0v16l13-8Z" fill="#fff" fill-opacity="0.9"/>
+  <text x="124" y="344" font-size="11" font-weight="600" fill="#fff">EP 01</text>
+  <rect x="228" y="286" width="104" height="70" rx="16" fill="url(#g3)"/>
+  <path d="M275.0 313.0v16l13-8Z" fill="#fff" fill-opacity="0.9"/>
+  <text x="240" y="344" font-size="11" font-weight="600" fill="#fff">EP 02</text>
+  <rect x="344" y="286" width="104" height="70" rx="16" fill="url(#screen)"/>
+  <path d="M391.0 313.0v16l13-8Z" fill="#fff" fill-opacity="0.9"/>
+  <text x="356" y="344" font-size="11" font-weight="600" fill="#fff">EP 03</text>
+  <text x="112" y="388" font-size="12" fill="#6f6a80">Partnership term · 12 months</text>
+  <path d="M118 418H442" stroke="#e7e0f7" stroke-width="3"/>
+  <path d="M118 418H334" stroke="#7f6bd6" stroke-width="3"/>
+  <circle cx="118" cy="418" r="7" fill="#7f6bd6" stroke="#7f6bd6" stroke-width="2"/><circle cx="226" cy="418" r="7" fill="#7f6bd6" stroke="#7f6bd6" stroke-width="2"/><circle cx="334" cy="418" r="7" fill="#7f6bd6" stroke="#7f6bd6" stroke-width="2"/><circle cx="442" cy="418" r="7" fill="#fff" stroke="#7f6bd6" stroke-width="2"/>
+  <g font-size="11" fill="#6f6a80" text-anchor="middle"><text x="118" y="446">Q1</text><text x="226" y="446">Q2</text><text x="334" y="446">Q3</text><text x="442" y="446">Q4</text></g>
+  <rect x="350" y="30" width="206" height="46" rx="23" fill="#fff" filter="url(#sh)"/>
+  <circle cx="375" cy="53" r="10" fill="#7f6bd6"/>
+  <path d="M370.5 53l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="393" y="58" font-size="15" font-weight="600" fill="#1c1a24">Renewed for S3</text>
+  <rect x="26" y="494" width="206" height="46" rx="23" fill="#1c1a24" filter="url(#sh)"/>
+  <circle cx="52" cy="517" r="10" fill="#a38ae4"/>
+  <path d="M47.500 517l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="70" y="522" font-size="14" font-weight="500" fill="#fff">Long-term partner</text>
+</svg>

@@ -1,5 +1,4 @@
 import { motion } from 'motion/react'
-import type { ReactNode } from 'react'
 import { SectionHeading } from '@/components/shared/section-heading'
 import {
   IntegrationMockup,
@@ -11,9 +10,10 @@ interface Service {
   number: string
   title: string
   description: string
+  image: string
 }
 
-const MOCKUPS: readonly ReactNode[] = [<StrategyMockup />, <ProductMockup />, <IntegrationMockup />]
+const MOCKUPS = [StrategyMockup, ProductMockup, IntegrationMockup] as const
 
 const SERVICES: readonly Service[] = [
   {
@@ -21,36 +21,42 @@ const SERVICES: readonly Service[] = [
     title: 'Influencer Marketing',
     description:
       'We plan and execute influencer campaigns that connect brands with relevant creators across Instagram, YouTube and other digital platforms.',
+    image: '/influencer-marketing.svg',
   },
   {
     number: '02',
     title: 'Talent Management',
     description:
       'We help creators build their personal brands, manage collaborations, negotiate deals and develop long-term opportunities.',
+    image: '/talent-management.svg',
   },
   {
     number: '03',
     title: 'UGC Content Creation',
     description:
       'We connect brands with UGC creators to produce relatable, platform-native videos, product demonstrations, testimonials and creative ad assets.',
+    image: '/ugc-content-creation.svg',
   },
   {
     number: '04',
     title: 'Content Strategy & Personal Branding',
     description:
       'We help creators identify their niche, develop content pillars, build a consistent voice and create a sustainable content roadmap.',
+    image: '/content-strategy.svg',
   },
   {
     number: '05',
     title: 'Influencer Advertising Shoots',
     description:
       'From concept development and creator selection to shoots and final deliverables, we handle the creative process.',
+    image: '/influencer-advertising-shoots.svg',
   },
   {
     number: '06',
     title: 'Brand IPs & Long-term Partnerships',
     description:
       'We conceptualise creator-led shows, branded content series, recurring collaborations and digital properties that build long-term audience connections.',
+    image: '/brand-ips-partnerships.svg',
   },
 ]
 
@@ -64,7 +70,9 @@ export function Services() {
         />
 
         <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-3 md:gap-x-6 md:gap-y-16">
-          {SERVICES.map((service, index) => (
+          {SERVICES.map((service, index) => {
+            const Mockup = MOCKUPS[index % MOCKUPS.length]
+            return (
             <motion.article
               key={service.title}
               initial={{ opacity: 0, y: 32 }}
@@ -72,7 +80,7 @@ export function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: (index % 3) * 0.12, ease: 'easeOut' }}
             >
-              {MOCKUPS[index % MOCKUPS.length]}
+              <Mockup image={service.image} />
               <h3 className="mt-6 text-2xl font-medium tracking-tight">
                 <span className="mr-2 text-base text-lavender-300">{service.number}.</span>
                 {service.title}
@@ -81,7 +89,8 @@ export function Services() {
                 {service.description}
               </p>
             </motion.article>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

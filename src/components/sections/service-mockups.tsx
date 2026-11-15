@@ -7,13 +7,15 @@ interface Hill {
 interface GlassCardProps {
   /** Sharp "scenery" shapes behind the glass; they get blurred where the panel covers them. */
   hills: Hill[]
+  /** Optional preview illustration shown on top of the glass. */
+  image?: string
 }
 
 /**
  * Purple scene with a large frosted-glass panel inset in it. Everything behind the
  * panel is blurred, while the parts peeking out around it stay sharp.
  */
-function GlassCard({ hills }: GlassCardProps) {
+function GlassCard({ hills, image }: GlassCardProps) {
   return (
     <div className="relative aspect-[4/4.2] overflow-hidden rounded-3xl bg-linear-to-b from-lavender-100 via-lavender-300 to-lavender-500">
       {/* TODO: optional background image slot (replaces the hills) */}
@@ -38,13 +40,22 @@ function GlassCard({ hills }: GlassCardProps) {
         aria-hidden="true"
         className="absolute inset-[8%] rounded-3xl border border-white/30 bg-white/10 shadow-[inset_0_1px_0_rgb(255_255_255/0.4)] backdrop-blur-2xl"
       />
+
+      {image && (
+        <img src={image} alt="" className="absolute inset-[8%] size-[84%] object-contain" />
+      )}
     </div>
   )
 }
 
-export function StrategyMockup() {
+interface MockupProps {
+  image?: string
+}
+
+export function StrategyMockup({ image }: MockupProps) {
   return (
     <GlassCard
+      image={image}
       hills={[
         { className: '-bottom-[12%] -left-[20%] h-[48%] w-[80%] from-lavender-500 to-lavender-700' },
         { className: '-right-[25%] -bottom-[14%] h-[42%] w-[85%] from-lavender-400 to-lavender-600' },
@@ -55,9 +66,10 @@ export function StrategyMockup() {
   )
 }
 
-export function ProductMockup() {
+export function ProductMockup({ image }: MockupProps) {
   return (
     <GlassCard
+      image={image}
       hills={[
         { className: '-bottom-[10%] left-[10%] h-[44%] w-[90%] from-lavender-400 to-lavender-700' },
         { className: 'top-[30%] -left-[18%] h-[30%] w-[40%] from-lavender-600 to-lavender-700' },
@@ -67,9 +79,10 @@ export function ProductMockup() {
   )
 }
 
-export function IntegrationMockup() {
+export function IntegrationMockup({ image }: MockupProps) {
   return (
     <GlassCard
+      image={image}
       hills={[
         { className: '-bottom-[16%] -left-[10%] h-[50%] w-[120%] from-lavender-500 to-lavender-700' },
         { className: 'top-[34%] -left-[16%] h-[26%] w-[34%] from-lavender-500 to-lavender-700' },
